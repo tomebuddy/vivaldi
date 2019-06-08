@@ -1,6 +1,6 @@
 <?php
 
-namespace Vivaldi;
+namespace Tomebuddy\Vivaldi;
 
 class ValidationComposer
 {
