@@ -21,6 +21,9 @@
         "php": "^7.1.3",
         "laravel/framework": "5.8.*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
     "autoload": {
         "psr-4": {
             "Tomebuddy\\Vivaldi\\": "src/Vivaldi"
