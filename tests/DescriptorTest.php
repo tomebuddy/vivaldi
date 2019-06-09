@@ -11,7 +11,7 @@ class DescriptorTest extends TestCase
 {
     public function testCanBeInstanciatedWithAnArray()
     {
-        $descriptor = new Descriptor(['item' => ['rules' => null]]);
+        $descriptor = new Descriptor(['item' => ['rules' => 'test']]);
         $this->assertInstanceOf(Descriptor::class, $descriptor);
     }
 
@@ -38,7 +38,7 @@ class DescriptorTest extends TestCase
 
     public function testCanReturnAllItems()
     {
-        $array = ['item' => ['rules' => null]];
+        $array = ['item' => ['rules' => 'test']];
         $descriptor = new Descriptor($array);
         $items = $descriptor->getItems();
 
@@ -49,8 +49,8 @@ class DescriptorTest extends TestCase
     public function testCanBeInstanciatedWithPredeclaredItems()
     {
         $itemsSample = [
-            'item1' => ['rules' => null, 'messages' => null],
-            'item2' => ['rules' => null, 'messages' => null],
+            'item1' => ['rules' => 'test', 'messages' => null],
+            'item2' => ['rules' => 'test', 'messages' => null],
         ];
 
         $descriptor = new DescriptorSample();
@@ -61,7 +61,7 @@ class DescriptorTest extends TestCase
 
     public function testCanOverridePredeclaredItemsOnInstanciation()
     {
-        $newItems = ['item3' => ['rules' => null]];
+        $newItems = ['item3' => ['rules' => 'test']];
 
         $descriptor = new DescriptorSample($newItems);
 

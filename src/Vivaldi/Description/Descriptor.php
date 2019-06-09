@@ -66,7 +66,7 @@ class Descriptor implements DescriptorContract
         }
 
         foreach ($this->items as $item => $value) {
-            if (! is_array($value) || ! array_key_exists('rules', $value)) {
+            if (! is_array($value) || ! array_key_exists('rules', $value) || empty($value['rules'])) {
                 throw new DescriptionException("The ".static::class." descriptor could not be constructed, {".$item."} item has missing rules.");
             }
         }
