@@ -61,4 +61,15 @@ class Descriptor implements DescriptorContract
     {
         return $this->items;
     }
+
+    /**
+     * Return an item given its name.
+     *
+     * @param  string  $name
+     * @return mixed
+     */
+    public function getItem($name)
+    {
+        return $this->items[$name];
+    }
 }

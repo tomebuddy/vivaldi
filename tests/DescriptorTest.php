@@ -63,4 +63,14 @@ class DescriptorTest extends TestCase
         $this->assertInstanceOf(Descriptor::class, $descriptor);
         $this->assertEquals($descriptor->getItems(), $newItems);
     }
+
+    public function testCanReturnAnExistingItem()
+    {
+        $descriptor = new DescriptorSample(['itemTest' => 'test']);
+
+        $item = $descriptor->getItem('itemTest');
+
+        $this->assertEquals($item, 'test');
+
+    }
 }
