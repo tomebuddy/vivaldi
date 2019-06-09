@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.2/phpunit.xsd"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         bootstrap="./vendor/autoload.php">
+    <testsuites>
+        <testsuite name="Vivaldi Package Test Suite">
+            <directory suffix="Test.php" phpVersion="7.1.3" phpVersionOperator=">=">./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
