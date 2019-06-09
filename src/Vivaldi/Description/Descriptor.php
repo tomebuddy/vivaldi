@@ -72,4 +72,15 @@ class Descriptor implements DescriptorContract
     {
         return $this->items[$name];
     }
+
+    /**
+     * Verify that an item exists.
+     *
+     * @param  string  $name
+     * @return boolean
+     */
+    public function itemExists($name)
+    {
+        return array_key_exists($name, $this->items);
+    }
 }

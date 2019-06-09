@@ -72,4 +72,12 @@ class DescriptorTest extends TestCase
 
         $this->assertEquals($item, 'test');
     }
+
+    public function testCanCheckThatAnItemExistsOrNot()
+    {
+        $descriptor = new DescriptorSample(['itemTest' => 'test']);
+
+        $this->assertTrue($descriptor->itemExists('itemTest'));
+        $this->assertFalse($descriptor->itemExists('noItem'));
+    }
 }
