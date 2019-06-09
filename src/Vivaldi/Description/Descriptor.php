@@ -46,5 +46,17 @@ class Descriptor implements DescriptorContract
         if (! is_array($items) || count($items) < 1) {
             throw new ItemsMissingException(static::class);
         }
+
+        $this->items = $items;
+    }
+
+    /**
+     * Return all declared items.
+     *
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }

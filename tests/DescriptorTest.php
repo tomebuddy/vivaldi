@@ -27,4 +27,14 @@ class DescriptorTest extends TestCase
         $this->expectExceptionMessage('The Tomebuddy\Vivaldi\Description\Descriptor descriptor could not be constructed, description items are missing.');
         new Descriptor([]);
     }
+
+    public function testCanReturnAllItems()
+    {
+        $array = ['item' => null];
+        $descriptor = new Descriptor($array);
+        $items = $descriptor->getItems();
+
+        $this->assertIsArray($items);
+        $this->assertEquals($items, $array);
+    }
 }
