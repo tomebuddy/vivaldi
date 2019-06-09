@@ -28,5 +28,10 @@
         "psr-4": {
             "Tomebuddy\\Vivaldi\\": "src/Vivaldi"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tomebuddy\\Vivaldi\\Tests\\": "tests/"
+        }
     }
 }
