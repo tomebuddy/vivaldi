@@ -93,4 +93,17 @@ class DescriptorTest extends TestCase
         $this->assertTrue($descriptor->itemExists('itemTest'));
         $this->assertFalse($descriptor->itemExists('noItem'));
     }
+
+    public function testCanStaticallyRetrieveAnItem()
+    {
+        $this->assertEquals(DescriptorSample::item1(), ['rules' => 'test', 'messages' => null]);
+    }
+
+    public function testCannotStaticallyRetrieveAnUnexistingItem()
+    {
+        $this->expectException(DescriptionException::class);
+        $this->expectExceptionMessage('The {noItem} item does not exists in the Tomebuddy\Vivaldi\Tests\Samples\DescriptorSample descriptor.');
+
+        DescriptorSample::noItem();
+    }
 }

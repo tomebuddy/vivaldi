@@ -34,6 +34,13 @@ class Descriptor implements DescriptorContract
     protected $items = null;
 
     /**
+     * The static instance
+     *
+     * @var Tomebuddy\Vivaldi\Description\Descriptor
+     */
+    protected static $instance = null;
+
+    /**
      * Constructor
      *
      * @param  array $items
@@ -69,6 +76,33 @@ class Descriptor implements DescriptorContract
             if (! is_array($value) || ! array_key_exists('rules', $value) || empty($value['rules'])) {
                 throw new DescriptionException("The ".static::class." descriptor could not be constructed, {".$item."} item has missing rules.");
             }
+        }
+    }
+
+    /**
+     * Intercept a static call and consider it to be a query to a description item.
+     * Instanciate the descriptor if the static instance does not exists.
+     *
+     * @param  string $name
+     * @param  array  $arguments
+     * @return mixed
+     */
+    public static function __callStatic(string $name, array $arguments)
+    {
+        static::checkStaticInstance();
+
+        return static::$instance->getItem($name);
+    }
+
+    /**
+     * Check that the static instance exists. If not, instanciate it.
+     *
+     * @return void
+     */
+    protected static function checkStaticInstance()
+    {
+        if (is_null(static::$instance)) {
+            static::$instance = new static();
         }
     }
 
