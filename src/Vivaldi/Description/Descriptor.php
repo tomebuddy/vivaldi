@@ -67,9 +67,15 @@ class Descriptor implements DescriptorContract
      *
      * @param  string  $name
      * @return mixed
+     *
+     * @throws Tombebuddy\Vivaldi\Description\DescriptionException
      */
     public function getItem($name)
     {
+        if (! $this->itemExists($name)) {
+            throw new DescriptionException("The {".$name."} item does not exists in the ".static::class." descriptor.");
+        }
+
         return $this->items[$name];
     }
 

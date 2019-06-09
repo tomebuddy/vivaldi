@@ -73,6 +73,14 @@ class DescriptorTest extends TestCase
         $this->assertEquals($item, 'test');
     }
 
+    public function testCannotReturnAnInexistingItem()
+    {
+        $this->expectException(DescriptionException::class);
+        $this->expectExceptionMessage('The {noItem} item does not exists in the Tomebuddy\Vivaldi\Description\Descriptor descriptor.');
+
+        (new Descriptor(['itemTest' => 'test']))->getItem('noItem');
+    }
+
     public function testCanCheckThatAnItemExistsOrNot()
     {
         $descriptor = new DescriptorSample(['itemTest' => 'test']);
