@@ -71,6 +71,5 @@ class DescriptorTest extends TestCase
         $item = $descriptor->getItem('itemTest');
 
         $this->assertEquals($item, 'test');
-
     }
 }
