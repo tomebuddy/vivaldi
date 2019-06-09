@@ -12,8 +12,8 @@ class DescriptionException extends Exception {
      * @param  string $descriptor
      * @return void
      */
-    public function __construct(string $descriptor)
+    public function __construct(string $message)
     {
-        parent::__construct("The $descriptor descriptor could not be constructed, description items are missing.");
+        parent::__construct($message);
     }
 }
