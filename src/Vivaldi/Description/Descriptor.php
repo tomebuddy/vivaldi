@@ -115,6 +115,16 @@ class Descriptor implements DescriptorContract
     {
         return $this->items;
     }
+    
+    /**
+     * Return only the items' names.
+     *
+     * @return array
+     */
+    public function getItemsNames()
+    {
+        return array_keys($this->items);
+    }
 
     /**
      * Return an item given its name.

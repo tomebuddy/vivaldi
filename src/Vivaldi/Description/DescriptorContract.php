@@ -12,6 +12,13 @@ interface DescriptorContract
     public function getItems();
 
     /**
+     * Retrieve all items' names
+     *
+     * @return array
+     */
+    public function getItemsNames();
+
+    /**
      * Retrieve an item
      *
      * @return array

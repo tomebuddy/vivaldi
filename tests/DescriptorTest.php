@@ -45,6 +45,19 @@ class DescriptorTest extends TestCase
         $this->assertIsArray($items);
         $this->assertEquals($items, $array);
     }
+    
+    public function testCanReturnAllItemsNames()
+    {
+        $items = [
+            'item1' => ['rules' => 'test'],
+            'item2' => ['rules' => 'test'],
+            'item3' => ['rules' => 'test'],
+        ];
+
+        $itemsNames = (new Descriptor($items))->getItemsNames();
+
+        $this->assertEquals($itemsNames, ['item1', 'item2', 'item3']);
+    }
 
     public function testCanBeInstanciatedWithPredeclaredItems()
     {
