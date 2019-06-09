@@ -11,7 +11,7 @@ class DescriptorTest extends TestCase
 {
     public function testCanBeInstanciatedWithAnArray()
     {
-        $descriptor = new Descriptor(['item' => null]);
+        $descriptor = new Descriptor(['item' => ['rules' => null]]);
         $this->assertInstanceOf(Descriptor::class, $descriptor);
     }
 
@@ -29,9 +29,16 @@ class DescriptorTest extends TestCase
         new Descriptor([]);
     }
 
+    public function testCannotBeInstanciatedWithAWrongItemsStructure()
+    {
+        $this->expectException(DescriptionException::class);
+        $this->expectExceptionMessage('The Tomebuddy\Vivaldi\Description\Descriptor descriptor could not be constructed, {badItem} item has missing rules.');
+        new Descriptor(['badItem' => null]);
+    }
+
     public function testCanReturnAllItems()
     {
-        $array = ['item' => null];
+        $array = ['item' => ['rules' => null]];
         $descriptor = new Descriptor($array);
         $items = $descriptor->getItems();
 
@@ -54,9 +61,7 @@ class DescriptorTest extends TestCase
 
     public function testCanOverridePredeclaredItemsOnInstanciation()
     {
-        $newItems = [
-            'item3' => 'test',
-        ];
+        $newItems = ['item3' => ['rules' => null]];
 
         $descriptor = new DescriptorSample($newItems);
 
@@ -66,11 +71,11 @@ class DescriptorTest extends TestCase
 
     public function testCanReturnAnExistingItem()
     {
-        $descriptor = new Descriptor(['itemTest' => 'test']);
+        $descriptor = new Descriptor(['itemTest' => ['rules' => 'test']]);
 
         $item = $descriptor->getItem('itemTest');
 
-        $this->assertEquals($item, 'test');
+        $this->assertEquals($item, ['rules' => 'test']);
     }
 
     public function testCannotReturnAnInexistingItem()
@@ -78,12 +83,12 @@ class DescriptorTest extends TestCase
         $this->expectException(DescriptionException::class);
         $this->expectExceptionMessage('The {noItem} item does not exists in the Tomebuddy\Vivaldi\Description\Descriptor descriptor.');
 
-        (new Descriptor(['itemTest' => 'test']))->getItem('noItem');
+        (new Descriptor(['itemTest' => ['rules' => 'test']]))->getItem('noItem');
     }
 
     public function testCanCheckThatAnItemExistsOrNot()
     {
-        $descriptor = new Descriptor(['itemTest' => 'test']);
+        $descriptor = new Descriptor(['itemTest' => ['rules' => 'test']]);
 
         $this->assertTrue($descriptor->itemExists('itemTest'));
         $this->assertFalse($descriptor->itemExists('noItem'));

@@ -47,8 +47,28 @@ class Descriptor implements DescriptorContract
             $this->items = $items;
         }
 
+        $this->checkItemsArray();
+    }
+
+    /**
+     * Checks that the items array exists and is well formed.
+     * That means that every items should have an array as a value, and that
+     * that array must contains a 'rules' key at least.
+     *
+     * @return void
+     *
+     * @throws Tombebuddy\Vivaldi\Description\DescriptionException
+     */
+    protected function checkItemsArray()
+    {
         if (! is_array($this->items) || count($this->items) < 1) {
             throw new DescriptionException("The ".static::class." descriptor could not be constructed, description items are missing.");
+        }
+
+        foreach ($this->items as $item => $value) {
+            if (! is_array($value) || ! array_key_exists('rules', $value)) {
+                throw new DescriptionException("The ".static::class." descriptor could not be constructed, {".$item."} item has missing rules.");
+            }
         }
     }
 
