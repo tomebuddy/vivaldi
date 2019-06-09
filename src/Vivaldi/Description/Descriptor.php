@@ -48,7 +48,7 @@ class Descriptor implements DescriptorContract
         }
 
         if (! is_array($this->items) || count($this->items) < 1) {
-            throw new ItemsMissingException(static::class);
+            throw new DescriptionException(static::class);
         }
     }
 

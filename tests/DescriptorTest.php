@@ -4,7 +4,7 @@ namespace Tomebuddy\Vivaldi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Tomebuddy\Vivaldi\Description\Descriptor;
-use Tomebuddy\Vivaldi\Description\ItemsMissingException;
+use Tomebuddy\Vivaldi\Description\DescriptionException;
 use Tomebuddy\Vivaldi\Tests\Samples\DescriptorSample;
 
 class DescriptorTest extends TestCase
@@ -17,14 +17,14 @@ class DescriptorTest extends TestCase
 
     public function testCannotBeInstanciatedWithoutAnArray()
     {
-        $this->expectException(ItemsMissingException::class);
+        $this->expectException(DescriptionException::class);
         $this->expectExceptionMessage('The Tomebuddy\Vivaldi\Description\Descriptor descriptor could not be constructed, description items are missing.');
         new Descriptor();
     }
 
     public function testCannotBeInstanciatedWithAnEmptyArray()
     {
-        $this->expectException(ItemsMissingException::class);
+        $this->expectException(DescriptionException::class);
         $this->expectExceptionMessage('The Tomebuddy\Vivaldi\Description\Descriptor descriptor could not be constructed, description items are missing.');
         new Descriptor([]);
     }

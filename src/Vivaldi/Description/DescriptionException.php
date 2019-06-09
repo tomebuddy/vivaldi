@@ -4,7 +4,7 @@ namespace Tomebuddy\Vivaldi\Description;
 
 use Exception;
 
-class ItemsMissingException extends Exception {
+class DescriptionException extends Exception {
 
     /**
      * Constructor
