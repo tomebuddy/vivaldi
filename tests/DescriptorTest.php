@@ -66,7 +66,7 @@ class DescriptorTest extends TestCase
 
     public function testCanReturnAnExistingItem()
     {
-        $descriptor = new DescriptorSample(['itemTest' => 'test']);
+        $descriptor = new Descriptor(['itemTest' => 'test']);
 
         $item = $descriptor->getItem('itemTest');
 
@@ -83,7 +83,7 @@ class DescriptorTest extends TestCase
 
     public function testCanCheckThatAnItemExistsOrNot()
     {
-        $descriptor = new DescriptorSample(['itemTest' => 'test']);
+        $descriptor = new Descriptor(['itemTest' => 'test']);
 
         $this->assertTrue($descriptor->itemExists('itemTest'));
         $this->assertFalse($descriptor->itemExists('noItem'));
