@@ -1,10 +1,11 @@
 <?php
 
-namespace Vivaldi\Tests;
+namespace Tomebuddy\Vivaldi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Tomebuddy\Vivaldi\Description\Descriptor;
 use Tomebuddy\Vivaldi\Description\ItemsMissingException;
+use Tomebuddy\Vivaldi\Tests\Samples\DescriptorSample;
 
 class DescriptorTest extends TestCase
 {
@@ -36,5 +37,30 @@ class DescriptorTest extends TestCase
 
         $this->assertIsArray($items);
         $this->assertEquals($items, $array);
+    }
+
+    public function testCanBeInstanciatedWithPredeclaredItems()
+    {
+        $itemsSample = [
+            'item1' => ['rules' => null, 'messages' => null],
+            'item2' => ['rules' => null, 'messages' => null],
+        ];
+
+        $descriptor = new DescriptorSample();
+
+        $this->assertInstanceOf(Descriptor::class, $descriptor);
+        $this->assertEquals($descriptor->getItems(), $itemsSample);
+    }
+
+    public function testCanOverridePredeclaredItemsOnInstanciation()
+    {
+        $newItems = [
+            'item3' => 'test',
+        ];
+
+        $descriptor = new DescriptorSample($newItems);
+
+        $this->assertInstanceOf(Descriptor::class, $descriptor);
+        $this->assertEquals($descriptor->getItems(), $newItems);
     }
 }

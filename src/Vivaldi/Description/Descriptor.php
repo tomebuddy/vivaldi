@@ -31,7 +31,7 @@ class Descriptor implements DescriptorContract
      *
      * @var array
      */
-    protected $items = [];
+    protected $items = null;
 
     /**
      * Constructor
@@ -41,13 +41,15 @@ class Descriptor implements DescriptorContract
      *
      * @throws Tombebuddy\Vivaldi\Description\ItemsMissingException
      */
-    public function __construct($items = [])
+    public function __construct($items = null)
     {
-        if (! is_array($items) || count($items) < 1) {
-            throw new ItemsMissingException(static::class);
+        if ($items !== null) {
+            $this->items = $items;
         }
 
-        $this->items = $items;
+        if (! is_array($this->items) || count($this->items) < 1) {
+            throw new ItemsMissingException(static::class);
+        }
     }
 
     /**
