@@ -51,7 +51,7 @@ class DescriptionAdapter
      * @param  string  $input
      * @return void
      *
-     * @throws
+     * @throws \Tomebuddy\Vivaldi\Validation\AdaptationException
      */
     public function __construct(string $input)
     {
@@ -68,6 +68,8 @@ class DescriptionAdapter
      * @param  string|\Tomebuddy\Vivaldi\Description\DescriptorContract  $descriptor
      * @param  string  $item
      * @return \Tomebuddy\Vivaldi\Validation\DescriptionAdapter
+     *
+     * @throws \Tomebuddy\Vivaldi\Validation\AdaptationException
      */
     public function using($descriptor, string $item)
     {
