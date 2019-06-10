@@ -9,7 +9,7 @@ class DescriptionException extends Exception {
     /**
      * Constructor
      *
-     * @param  string $descriptor
+     * @param  string $message
      * @return void
      */
     public function __construct(string $message)
