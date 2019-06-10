@@ -46,7 +46,7 @@ class Descriptor implements DescriptorContract
      * @param  array $items
      * @return void
      *
-     * @throws Tombebuddy\Vivaldi\Description\ItemsMissingException
+     * @throws Tombebuddy\Vivaldi\Description\DescriptionException
      */
     public function __construct($items = null)
     {
