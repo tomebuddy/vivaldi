@@ -155,7 +155,8 @@ class Descriptor implements DescriptorContract
     }
 
     /**
-     * Return an item's messages given its name.
+     * Return an item's messages given its name. Messages are optional, but we'll
+     * always return an array anyway.
      *
      * @param  string $name
      * @return array
