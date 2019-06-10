@@ -33,4 +33,10 @@ class DescriptionAdapterTest extends TestCase
         $this->expectExceptionMessage('The Tomebuddy\Vivaldi\Validation\DescriptionAdapter could not be constructed, input is missing.');
         new DescriptionAdapter('  ');
     }
+
+    public function testCanReturnTheDeclaredInput()
+    {
+        $adapter = new DescriptionAdapter('input');
+        $this->assertEquals($adapter->getInput(), 'input');
+    }
 }

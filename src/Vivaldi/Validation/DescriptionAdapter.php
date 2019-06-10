@@ -60,4 +60,14 @@ class DescriptionAdapter
 
         $this->input = $input;
     }
+
+    /**
+     * Return the input
+     *
+     * @return string
+     */
+    public function getInput()
+    {
+        return $this->input;
+    }
 }
