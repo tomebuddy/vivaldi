@@ -98,6 +98,20 @@ class DescriptorTest extends TestCase
         $this->assertEquals($descriptor->getItemRules('itemTest'), 'test');
     }
 
+    public function testCanReturnAnExistingItemsMessages()
+    {
+        $descriptor = new Descriptor(['itemTest' => ['rules' => 'test', 'messages' => 'message']]);
+
+        $this->assertEquals($descriptor->getItemMessages('itemTest'), 'message');
+    }
+
+    public function testCanReturnAnExistingItemsEmptyMessages()
+    {
+        $descriptor = new Descriptor(['itemTest' => ['rules' => 'test']]);
+
+        $this->assertEquals($descriptor->getItemMessages('itemTest'), []);
+    }
+
     public function testCannotReturnAnInexistingItem()
     {
         $this->expectException(DescriptionException::class);

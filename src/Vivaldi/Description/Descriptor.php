@@ -155,6 +155,17 @@ class Descriptor implements DescriptorContract
     }
 
     /**
+     * Return an item's messages given its name.
+     *
+     * @param  string $name
+     * @return array
+     */
+    public function getItemMessages($name)
+    {
+        return $this->getItem($name)['messages'] ?? [];
+    }
+
+    /**
      * Verify that an item exists.
      *
      * @param  string  $name
