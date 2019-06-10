@@ -45,7 +45,7 @@ class DescriptorTest extends TestCase
         $this->assertIsArray($items);
         $this->assertEquals($items, $array);
     }
-    
+
     public function testCanReturnAllItemsNames()
     {
         $items = [
@@ -91,12 +91,27 @@ class DescriptorTest extends TestCase
         $this->assertEquals($item, ['rules' => 'test']);
     }
 
+    public function testCanReturnAnExistingItemsRules()
+    {
+        $descriptor = new Descriptor(['itemTest' => ['rules' => 'test']]);
+
+        $this->assertEquals($descriptor->getItemRules('itemTest'), 'test');
+    }
+
     public function testCannotReturnAnInexistingItem()
     {
         $this->expectException(DescriptionException::class);
         $this->expectExceptionMessage('The {noItem} item does not exists in the Tomebuddy\Vivaldi\Description\Descriptor descriptor.');
 
         (new Descriptor(['itemTest' => ['rules' => 'test']]))->getItem('noItem');
+    }
+
+    public function testCannotReturnAnInexistingItemRules()
+    {
+        $this->expectException(DescriptionException::class);
+        $this->expectExceptionMessage('The {noItem} item does not exists in the Tomebuddy\Vivaldi\Description\Descriptor descriptor.');
+
+        (new Descriptor(['itemTest' => ['rules' => 'test']]))->getItemRules('noItem');
     }
 
     public function testCanCheckThatAnItemExistsOrNot()

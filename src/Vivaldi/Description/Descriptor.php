@@ -115,7 +115,7 @@ class Descriptor implements DescriptorContract
     {
         return $this->items;
     }
-    
+
     /**
      * Return only the items' names.
      *
@@ -141,6 +141,17 @@ class Descriptor implements DescriptorContract
         }
 
         return $this->items[$name];
+    }
+
+    /**
+     * Return an item's rules given its name.
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getItemRules($name)
+    {
+        return $this->getItem($name)['rules'];
     }
 
     /**
