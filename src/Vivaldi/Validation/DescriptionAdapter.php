@@ -3,6 +3,7 @@
 namespace Tomebuddy\Vivaldi\Validation;
 
 use Tomebuddy\Vivaldi\Validation\AdaptationException;
+use Tomebuddy\Vivaldi\Description\DescriptorContract;
 
 class DescriptionAdapter
 {
@@ -62,6 +63,22 @@ class DescriptionAdapter
     }
 
     /**
+     * Set the description item that must be used to validate the input.
+     *
+     * @param  \Tomebuddy\Vivaldi\Description\DescriptorContract  $descriptor
+     * @param  string  $item
+     * @return \Tomebuddy\Vivaldi\Validation\DescriptionAdapter
+     */
+    public function using(DescriptorContract $descriptor, string $item)
+    {
+        $this->rules = $descriptor->getItemRules($item);
+        $this->messages = $descriptor->getItemMessages($item);
+        // TODO : retrieve the attributes too
+
+        return $this;
+    }
+
+    /**
      * Return the input
      *
      * @return string
@@ -69,5 +86,25 @@ class DescriptionAdapter
     public function getInput()
     {
         return $this->input;
+    }
+
+    /**
+     * Return the rules
+     *
+     * @return string
+     */
+    public function getRules()
+    {
+        return $this->rules;
+    }
+
+    /**
+     * Return the messages
+     *
+     * @return string
+     */
+    public function getMessages()
+    {
+        return $this->messages;
     }
 }
