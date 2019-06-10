@@ -64,4 +64,23 @@ class DescriptionAdapterTest extends TestCase
         $adapter->using($descriptor, 'item1');
         $this->assertEquals($adapter->getMessages(), 'message');
     }
+
+    public function testCanUseADescriptionItemRulesAndMessagesFromClass()
+    {
+        $adapter = new DescriptionAdapter('input');
+        $adapter->using(DescriptorSample::class, 'item1');
+
+        $this->assertInstanceOf(DescriptionAdapter::class, $adapter);
+        $this->assertEquals($adapter->getRules(), 'test');
+        $this->assertEquals($adapter->getMessages(), 'message');
+    }
+
+    public function testCannotUseANonDescriptorClass()
+    {
+        $this->expectException(AdaptationException::class);
+        $this->expectExceptionMessage('The descriptor passed as an argument does not implement the DescriptorContract interface.');
+
+        $adapter = new DescriptionAdapter('input');
+        $adapter->using(static::class, 'item1');
+    }
 }

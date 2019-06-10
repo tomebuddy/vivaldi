@@ -65,12 +65,22 @@ class DescriptionAdapter
     /**
      * Set the description item that must be used to validate the input.
      *
-     * @param  \Tomebuddy\Vivaldi\Description\DescriptorContract  $descriptor
+     * @param  string|\Tomebuddy\Vivaldi\Description\DescriptorContract  $descriptor
      * @param  string  $item
      * @return \Tomebuddy\Vivaldi\Validation\DescriptionAdapter
      */
-    public function using(DescriptorContract $descriptor, string $item)
+    public function using($descriptor, string $item)
     {
+        // If the descriptor is not an instanciated descriptor, consider it to
+        // be a descriptor class that must be instanciated
+        if(is_string($descriptor)) {
+            $descriptor = new $descriptor();
+        }
+
+        if(! is_a($descriptor, DescriptorContract::class)) {
+            throw new AdaptationException('The descriptor passed as an argument does not implement the DescriptorContract interface.');
+        }
+
         $this->rules = $descriptor->getItemRules($item);
         $this->messages = $descriptor->getItemMessages($item);
         // TODO : retrieve the attributes too
