@@ -54,7 +54,7 @@ class DescriptionAdapterTest extends TestCase
         $descriptor = new DescriptorSample();
         $adapter = new DescriptionAdapter('input');
         $adapter->using($descriptor, 'item1');
-        $this->assertEquals($adapter->getRules(), 'test');
+        $this->assertEquals($adapter->getRules(), 'test1');
     }
 
     public function testCanUseADescriptionItemMessages()
@@ -62,7 +62,7 @@ class DescriptionAdapterTest extends TestCase
         $descriptor = new DescriptorSample();
         $adapter = new DescriptionAdapter('input');
         $adapter->using($descriptor, 'item1');
-        $this->assertEquals($adapter->getMessages(), 'message');
+        $this->assertEquals($adapter->getMessages(), 'message1');
     }
 
     public function testCanUseADescriptionItemRulesAndMessagesFromClass()
@@ -71,8 +71,8 @@ class DescriptionAdapterTest extends TestCase
         $adapter->using(DescriptorSample::class, 'item1');
 
         $this->assertInstanceOf(DescriptionAdapter::class, $adapter);
-        $this->assertEquals($adapter->getRules(), 'test');
-        $this->assertEquals($adapter->getMessages(), 'message');
+        $this->assertEquals($adapter->getRules(), 'test1');
+        $this->assertEquals($adapter->getMessages(), 'message1');
     }
 
     public function testCannotUseANonDescriptorClass()

@@ -62,8 +62,8 @@ class DescriptorTest extends TestCase
     public function testCanBeInstanciatedWithPredeclaredItems()
     {
         $itemsSample = [
-            'item1' => ['rules' => 'test', 'messages' => 'message'],
-            'item2' => ['rules' => 'test', 'messages' => 'message'],
+            'item1' => ['rules' => 'test1', 'messages' => 'message1'],
+            'item2' => ['rules' => 'test2', 'messages' => 'message2'],
         ];
 
         $descriptor = new DescriptorSample();
@@ -138,7 +138,7 @@ class DescriptorTest extends TestCase
 
     public function testCanStaticallyRetrieveAnItem()
     {
-        $this->assertEquals(DescriptorSample::item1(), ['rules' => 'test', 'messages' => 'message']);
+        $this->assertEquals(DescriptorSample::item1(), ['rules' => 'test1', 'messages' => 'message1']);
     }
 
     public function testCannotStaticallyRetrieveAnUnexistingItem()

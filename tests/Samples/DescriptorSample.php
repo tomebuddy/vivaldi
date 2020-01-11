@@ -7,7 +7,7 @@ use Tomebuddy\Vivaldi\Description\Descriptor;
 class DescriptorSample extends Descriptor
 {
     protected $items = [
-        'item1' => ['rules' => 'test', 'messages' => 'message'],
-        'item2' => ['rules' => 'test', 'messages' => 'message'],
+        'item1' => ['rules' => 'test1', 'messages' => 'message1'],
+        'item2' => ['rules' => 'test2', 'messages' => 'message2'],
     ];
 }
