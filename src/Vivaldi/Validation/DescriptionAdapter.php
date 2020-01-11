@@ -3,7 +3,7 @@
 namespace Tomebuddy\Vivaldi\Validation;
 
 use Tomebuddy\Vivaldi\Validation\AdaptationException;
-use Tomebuddy\Vivaldi\Description\DescriptorContract;
+use Tomebuddy\Vivaldi\Description\Contracts\DescriptorContract;
 
 class DescriptionAdapter
 {

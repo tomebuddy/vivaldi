@@ -2,7 +2,7 @@
 
 namespace Tomebuddy\Vivaldi\Description;
 
-use Tomebuddy\Vivaldi\Description\DescriptorContract;
+use Tomebuddy\Vivaldi\Description\Contracts\DescriptorContract;
 use Tomebuddy\Vivaldi\Description\DescriptionException;
 
 class Descriptor implements DescriptorContract

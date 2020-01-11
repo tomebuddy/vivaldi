@@ -1,6 +1,6 @@
 <?php
 
-namespace Tomebuddy\Vivaldi\Description;
+namespace Tomebuddy\Vivaldi\Description\Contracts;
 
 interface DescriptorContract
 {
